@@ -18,12 +18,25 @@ export default class Cache {
 
 		obj.imagesrc = node.image;
 			
-		const messageWithTagsRemoved = striptags(node.unformatted_message, [], ' ');
+		let messageWithTagsRemoved = striptags(node.unformatted_message, [], ' ');
 		let message;
 
 		if (messageWithTagsRemoved.length > 120) {
-			obj.message = messageWithTagsRemoved.substring(0, 120) + '...';
+			let message = Object.assign(messageWithTagsRemoved, {});
+			message = messageWithTagsRemoved.substring(0, 120) + '...';
+			message = message.substr(0, Math.min(message.length, message.lastIndexOf(" ")))
 
+			let messageArray = message.split(' ');
+
+			for (var i = 0; i < messageArray.length; i++) {
+				// for each word, if it begins with a hashtag or @ symbol
+				if (messageArray[i].indexOf('#') !== -1 || messageArray[i].indexOf('@') !== -1) {
+					//make the word have a class tag wrap
+					messageArray[i] = `<a href='#'>${messageArray[i]}</a>`
+				}
+			}
+
+			obj.message = messageArray.join(' ').trim() + '...';
 		} else {
 			obj.message =	node.unformatted_message;
 		}

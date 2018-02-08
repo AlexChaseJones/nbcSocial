@@ -7,6 +7,7 @@ import path from 'path';
 const app = express()
 
 const cache = new Cache;
+const juice = new Juice();
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', (req, res) => {
@@ -17,14 +18,18 @@ app.get('/', (req, res) => {
 
 
 app.listen(8080, () => {
+	run();
 	setInterval(() => {
-		const juice = new Juice();
+		run()
+	}, 300000);
+})
 
-		juice.fetchPosts()
-		.then(res => {
-			cache.updateDataCache(res).then(() => console.log('YAS'))
-		}).catch(e => {
+function run () {
+	juice.fetchPosts()
+	.then(res => {
+		cache.updateDataCache(res)
+		.catch(e => {
 			console.log(e)
 		})
-	}, 1000);
-})
+	})
+}
