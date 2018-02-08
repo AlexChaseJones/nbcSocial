@@ -21,9 +21,9 @@ export default class Cache {
 		let messageWithTagsRemoved = striptags(node.unformatted_message, [], ' ');
 		let message;
 
-		if (messageWithTagsRemoved.length > 120) {
+		if (messageWithTagsRemoved.length > 140) {
 			let message = Object.assign(messageWithTagsRemoved, {});
-			message = messageWithTagsRemoved.substring(0, 120) + '...';
+			message = messageWithTagsRemoved.substring(0, 140) + '...';
 			message = message.substr(0, Math.min(message.length, message.lastIndexOf(" ")))
 
 			let messageArray = message.split(' ');
