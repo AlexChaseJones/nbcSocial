@@ -100,7 +100,7 @@ a {
 	display: none;		
 }
 
-@media (max-height: 1080px) {
+@media (max-height: 1090px) {
 	#backgroundImage {
 		-webkit-transform-origin: left;
 		-ms-transform-origin: left;
@@ -124,7 +124,7 @@ a {
 		display: block;
 		position: absolute;
 		top: 558px;
-		left: 935px;
+		left: 860px;
 		width: 985px;
 	}
 
