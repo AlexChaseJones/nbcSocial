@@ -4,6 +4,7 @@ var http = require('http');
 var sizeOf = require('image-size');
 
 import striptags from 'striptags';
+import emojione from 'emojione';
 
 export default class Cache {
 	constructor() {
@@ -36,9 +37,9 @@ export default class Cache {
 				}
 			}
 
-			obj.message = messageArray.join(' ').trim() + '...';
+			obj.message = emojione.unicodeToImage(messageArray.join(' ').trim() + '...');
 		} else {
-			obj.message =	node.unformatted_message;
+			obj.message =	emojione.unicodeToImage(node.unformatted_message);
 		}
 
 		obj.username = node.source.term;
