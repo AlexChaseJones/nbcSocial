@@ -30,7 +30,7 @@ export default class Cache {
 
 			for (var i = 0; i < messageArray.length; i++) {
 				// for each word, if it begins with a hashtag or @ symbol
-				if (messageArray[i].indexOf('#') !== -1 || messageArray[i].indexOf('@') !== -1) {
+				if (messageArray[i].indexOf('#') !== -1 || messageArray[i].indexOf('@') !== -1 || messageArray[i].indexOf('usm.ag') !== -1 || messageArray[i].indexOf('bit.ly') !== -1) {
 					//make the word have a class tag wrap
 					messageArray[i] = `<a href='#'>${messageArray[i]}</a>`
 				}
