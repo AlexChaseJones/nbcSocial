@@ -1,10 +1,10 @@
-export default function(obj) {
+function template(obj) {
 return `
 	<!DOCTYPE html>
 <html>
 <head>
 	<title></title>
-	<link rel="stylesheet" href="styles/style.css" />
+	<link rel="stylesheet" href="styles/${obj.styleSheet}" />
 </head>
 <body>
 	<img id="backgroundImage" src="images/${obj.source}-background.png"/>
@@ -24,3 +24,5 @@ return `
 </body>
 </html>
 `}
+
+module.exports = template;

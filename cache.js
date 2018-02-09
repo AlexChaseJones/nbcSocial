@@ -3,10 +3,10 @@ var http = require('http');
  
 var sizeOf = require('image-size');
 
-import striptags from 'striptags';
-import emojione from 'emojione';
+const striptags = require('striptags');
+const emojione = require('emojione');
 
-export default class Cache {
+class Cache {
 	constructor() {
 		this.data;
 	}
@@ -98,11 +98,13 @@ export default class Cache {
 		})
 	}
 
-	getRandomInt() {
-	  return Math.floor(Math.random() * (this.data.length));
+	getRandomInt(data) {
+	  return Math.floor(Math.random() * (data.length));
 	}
 
 	getRandomPost() {
 		return this.data[this.getRandomInt()]
 	}
 }
+
+module.exports = Cache
