@@ -26,8 +26,8 @@ class Juice {
 		const imageOrientation = node.height < node.width ? 'landscape' : 'portrait';
 
 		let obj = {};
-
-		obj.imagesrc = node.image;
+		console.log(`${node.image}?crtx_mode=skip`)
+		obj.imagesrc = `${node.image}?crtx_mode=skip`;
 			
 		let messageWithTagsRemoved = striptags(node.unformatted_message, [], ' ');
 		let message;
